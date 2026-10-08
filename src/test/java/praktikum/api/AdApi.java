@@ -1,12 +1,12 @@
-package ru.praktikum.qadesk.api;
+package praktikum.api;
 
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.builder.MultiPartSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.MultiPartSpecification;
-import ru.praktikum.qadesk.config.Config;
-import ru.praktikum.qadesk.models.Ad;
+import praktikum.config.Config;
+import praktikum.models.Ad;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;

@@ -1,7 +1,7 @@
-package ru.praktikum.qadesk.data;
+package praktikum.data;
 
 import net.datafaker.Faker;
-import ru.praktikum.qadesk.models.Ad;
+import praktikum.models.Ad;
 
 import java.util.Locale;
 import java.util.UUID;

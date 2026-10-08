@@ -1,4 +1,4 @@
-package ru.praktikum.qadesk.config;
+package praktikum.config;
 
 public class Config {
 

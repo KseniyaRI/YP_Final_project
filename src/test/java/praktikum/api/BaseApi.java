@@ -1,4 +1,4 @@
-package ru.praktikum.qadesk.api;
+package praktikum.api;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
@@ -6,7 +6,7 @@ import io.restassured.config.EncoderConfig;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import ru.praktikum.qadesk.config.Config;
+import praktikum.config.Config;
 
 public class BaseApi {
 

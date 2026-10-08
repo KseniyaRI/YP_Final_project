@@ -1,4 +1,4 @@
-package ru.praktikum.qadesk.models;
+package praktikum.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

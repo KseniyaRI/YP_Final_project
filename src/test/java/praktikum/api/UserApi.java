@@ -1,9 +1,9 @@
-package ru.praktikum.qadesk.api;
+package praktikum.api;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import ru.praktikum.qadesk.config.Config;
-import ru.praktikum.qadesk.models.User;
+import praktikum.config.Config;
+import praktikum.models.User;
 
 public class UserApi extends BaseApi {
 

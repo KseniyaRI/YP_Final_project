@@ -1,4 +1,4 @@
-package ru.praktikum.qadesk.runner;
+package praktikum.runner;
 
 import org.junit.platform.suite.api.IncludeEngines;
 import org.junit.platform.suite.api.SelectClasspathResource;
