@@ -18,7 +18,8 @@
         <cucumber.version>7.34.9</cucumber.version>
         <junit.version>5.14.4</junit.version>
         <junit-platform.version>1.14.4</junit-platform.version>
-        <allure.version>2.35.5</allure.version>
+        <!-- allure-rest-assured 2.34+ собран под Java 17 -->
+        <allure.version>2.33.0</allure.version>
         <aspectj.version>1.9.22</aspectj.version>
         <lombok.version>1.18.48</lombok.version>
         <datafaker.version>1.9.0</datafaker.version>
@@ -79,12 +80,6 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber7-jvm</artifactId>
-            <version>${allure.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-selenide</artifactId>
             <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
