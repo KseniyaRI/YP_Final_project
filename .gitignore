@@ -1,0 +1,27 @@
+# Maven
+target/
+
+# Build
+build/
+.build/
+
+# Allure
+allure-results/
+allure-report/
+.allure
+
+# Compiled classes
+*.class
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code / Cursor
+.vscode/
+.cursor/
+
+# macOS
+.DS_Store
+
+docs/
