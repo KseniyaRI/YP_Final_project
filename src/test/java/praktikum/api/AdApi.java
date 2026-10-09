@@ -28,27 +28,53 @@ public class AdApi extends BaseApi {
                 .post(Config.CREATE_LISTING);
     }
 
-    public boolean exists(Integer id) {
-        if (id == null) {
-            return false;
-        }
-        setUp();
+    public boolean exists(String token, int id) {
         int page = 1;
         int totalPages = 1;
         while (page <= totalPages) {
+            setUp();
             Response response = RestAssured.given()
-                    .get(Config.LISTINGS + "/" + page);
+                    .header("Authorization", "Bearer " + token)
+                    .when()
+                    .get(Config.PROFILE_LISTINGS + "/" + page);
             if (response.statusCode() != 200) {
-                return false;
+                throw new IllegalStateException(
+                        "Не удалось проверить объявление " + id + ": " + response.statusCode()
+                                + " " + response.asString());
             }
-            List<Object> ids = response.jsonPath().getList("offers.id");
-            if (containsId(ids, id)) {
+            List<Integer> ids = response.jsonPath().getList("offers.id", Integer.class);
+            if (ids != null && ids.contains(id)) {
                 return true;
             }
             totalPages = response.jsonPath().getInt("totalPages");
             page++;
         }
         return false;
+    }
+
+    @Step("Найти страницу каталога с объявлением «{title}»")
+    public int catalogPage(String token, String title) {
+        int page = 1;
+        int totalPages = 1;
+        while (page <= totalPages) {
+            setUp();
+            Response response = RestAssured.given()
+                    .header("Authorization", "Bearer " + token)
+                    .when()
+                    .get(Config.LISTINGS + "/" + page);
+            if (response.statusCode() != 200) {
+                throw new IllegalStateException(
+                        "Не удалось прочитать страницу " + page + " каталога: "
+                                + response.statusCode() + " " + response.asString());
+            }
+            List<String> names = response.jsonPath().getList("offers.name", String.class);
+            if (names != null && names.contains(title)) {
+                return page;
+            }
+            totalPages = response.jsonPath().getInt("totalPages");
+            page++;
+        }
+        throw new IllegalStateException("В каталоге нет объявления «" + title + "»");
     }
 
     @Step("Удалить объявление")
@@ -58,18 +84,6 @@ public class AdApi extends BaseApi {
                 .header("Authorization", "Bearer " + token)
                 .when()
                 .delete(Config.LISTINGS + "/" + id);
-    }
-
-    private static boolean containsId(List<Object> ids, int id) {
-        if (ids == null) {
-            return false;
-        }
-        for (Object value : ids) {
-            if (value != null && Integer.parseInt(value.toString()) == id) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private static MultiPartSpecification part(String name, String value) {

@@ -20,6 +20,7 @@ allure-report/
 # VS Code / Cursor
 .vscode/
 .cursor/
+.playwright-cli/
 
 # macOS
 .DS_Store

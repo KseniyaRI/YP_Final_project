@@ -9,18 +9,11 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage {
 
-    private final SelenideElement form = $x("//form[contains(@class,'popUp_shell')]");
-    private final SelenideElement title = form.$x(".//h1[text()='Войти']");
+    private final SelenideElement form = $x("//form[.//button[text()='Войти']]");
     private final SelenideElement emailInput = form.$("input[name='email']");
     private final SelenideElement passwordInput = form.$("input[name='password']");
     private final SelenideElement signInButton = form.$x(".//button[text()='Войти']");
     private final SelenideElement noAccountButton = form.$x(".//button[text()='Нет аккаунта']");
-
-    @Step("Проверить, что открыта форма входа")
-    public boolean isDisplayed() {
-        form.shouldBe(visible);
-        return title.shouldBe(visible).isDisplayed();
-    }
 
     @Step("Заполнить форму входа")
     public void fill(User user) {

@@ -35,8 +35,9 @@ public class AdGenerator {
     }
 
     public static String randomTitle() {
+        String word = FAKER.lorem().word().replaceAll("[\"'‘’“”]", "");
         String suffix = UUID.randomUUID().toString().substring(0, 8);
-        return FAKER.lorem().word() + suffix;
+        return word + suffix;
     }
 
     private static String pick(String[] values) {

@@ -15,7 +15,7 @@ public class UserGenerator {
 
     public static User randomUser() {
         String suffix = UUID.randomUUID().toString().substring(0, 8);
-        String email = "qadesk_" + suffix + "@yandex.ru";
+        String email = "praktikum_" + suffix + "@yandex.ru";
         String password = FAKER.internet().password(8, 16);
         return new User(email, password, password);
     }
